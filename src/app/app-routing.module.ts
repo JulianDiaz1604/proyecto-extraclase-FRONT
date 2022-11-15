@@ -10,7 +10,7 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [{
   path: '',
-  redirectTo: '',
+  redirectTo: 'artdly',
   pathMatch: 'full'
 }, {
   path: '',
