@@ -40,6 +40,10 @@ export class ArtworkService {
       artwork);
   }
 
+  createUser(user: any): Observable<any>{
+    return this.http.post<any>('/artdly/user/register', user)
+  }
+
   pushFileToStorage(file: FormData): Observable<HttpEvent<{}>> {
     //const data: FormData = new FormData();
     //data.append('file', file);

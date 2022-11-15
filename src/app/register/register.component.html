@@ -29,25 +29,25 @@
             Registrate
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Nombre" type="text" style="width: 70%" class="input2" required="">
+            <input #name placeholder="Nombre" type="text" style="width: 70%" class="input2" required="">
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Apellido" type="text" style="width: 70%" class="input2" required="">
+            <input #lastname placeholder="Apellido" type="text" style="width: 70%" class="input2" required="">
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Correo" type="text" style="width: 70%" class="input2" required="">
+            <input #email placeholder="Correo" type="text" style="width: 70%" class="input2" required="">
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Nick" type="text" style="width: 70%" class="input2" required="">
+            <input #nick placeholder="Nick" type="text" style="width: 70%" class="input2" required="">
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Contraseña" type="text" style="width: 70%" class="input2" required="">
+            <input #password placeholder="Contraseña" type="password" style="width: 70%" class="input2" required="">
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Describete" type="text" style="width: 70%" class="input2" required="">
+            <input #description placeholder="Describete" type="text" style="width: 70%" class="input2" required="">
           </div>
           <div fxLayout="row" fxFlex="12.5" style="width: 100%; padding-top: 10px">
-            <input placeholder="Fecha de nacimiento (aaaa-mm-dd)" type="text" style="width: 70%" class="input2" required="">
+            <input #birthDate placeholder="Fecha de nacimiento (aaaa-mm-dd)" type="text" style="width: 70%" class="input2" required="">
           </div>
         </div>
         <div fxLayout="row" fxFlex="20">
@@ -57,7 +57,7 @@
             </button>
           </div>
           <div fxLayout="column" fxFlex="50" style="padding-top: 30px">
-            <button class="center2">
+            <button (click)="registerUser(name.value, lastname.value, email.value, nick.value, password.value, description.value, birthDate.value)" class="center2">
               Continuar
             </button>
           </div>

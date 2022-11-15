@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UploadService} from "../../service/upload.service";
 import {ArtworkService} from "../../service/artwork.service";
+import {InvitedUser, User} from "../../models/User";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'register',
@@ -8,27 +10,43 @@ import {ArtworkService} from "../../service/artwork.service";
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements OnInit{
+export class RegisterComponent{
 
-  categories: any;
-  artworkTypes: any;
+  httpAnswer: any;
+  invitedUser: InvitedUser = {
+    id: "10000000-0000-0000-0000-000000000000",
+    name: "Invitado",
+    lastName: "Artdly",
+    mail: "invitado@artdly.com",
+    username: "InvitadoArtdly",
+    password: "artdly",
+    birthDate: "2022-11-13",
+    description: "",
+    isPrivate: "false"
+  }
 
   constructor(
     private artworkService: ArtworkService
   ){
   }
 
-  ngOnInit(): void {
-    this.artworkService.listArtworks().subscribe(res => {
-      this.categories = res;
-      this.categories = this.categories.data;
-      console.log(this.categories);
-    });
-    this.artworkService.listArtworks().subscribe(res => {
-      this.artworkTypes = res;
-      this.artworkTypes = this.artworkTypes.data;
-      console.log(this.artworkTypes);
-    })
+  registerUser(name:any, lastName:any, email:any, nickname:any, password:any,description:any, birthDate:any){
+    const user: User = {
+      name: name,
+      lastName: lastName,
+      mail: email,
+      username: nickname,
+      password: password,
+      birthDate: birthDate,
+      description: description,
+      isPrivate: false
+    }
+    this.artworkService.createUser(user).subscribe(res =>{
+      this.httpAnswer = res;
+      console.log(res)
+      window.alert(this.httpAnswer.messages.content)
+    }, (error) => console.log(error.error.message.content))
+    console.log(user)
   }
 
 }
