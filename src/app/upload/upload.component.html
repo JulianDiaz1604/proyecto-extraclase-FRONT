@@ -32,19 +32,13 @@
         <div fxLayout="row" fxFlex="65">
           <div fxLayout="column" fxFlex="50">
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-              <td><mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Titulo</mat-label>
-                <input matInput>
-              </mat-form-field></td>
+              <input #tittle placeholder="Nombre" type="text" style="width: 70%" class="input2" required="">
             </div>
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-              <td><mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Descripción</mat-label>
-                <input matInput>
-              </mat-form-field></td>
+              <input #description placeholder="Nombre" type="text" style="width: 70%" class="input2" required="">
             </div>
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-              <mat-form-field appearance="fill" style="width: 98%">
+              <mat-form-field appearance="fill" style="max-height: 25px; width: 70%">
                 <mat-label>Categoria</mat-label>
                 <mat-select #category>
                   <mat-option *ngFor="let category of categories" [value]="category">
@@ -54,24 +48,24 @@
               </mat-form-field>
             </div>
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-              <mat-form-field appearance="fill" style="width: 98%">
+              <mat-form-field appearance="fill" style="max-height: 25px; width: 70%">
                 <mat-label>Tipo de obra</mat-label>
                 <mat-select #artworkType>
-                  <mat-option *ngFor="let artworkYType of artworkTypes" [value]="artworkYType">
-                    {{artworkYType.name}}
+                  <mat-option  *ngFor="let artworkType of artworkTypes" [value]="artworkType">
+                    {{artworkType.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-<!--              <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
+              <div class="text-center">
+                <input class="form-control" type="file"
+                       (change)="onChange($event)">
 
-              <div class="file-upload" style="width: 98%">
-                <div class="file-select">
-                  <div class="file-select-button" id="fileName">Elegir archivo</div>
-                  <div class="file-select-name" id="noFile">Ningún archivo seleccionado...</div>
-                  <input #file type="file" name="chooseFile" id="chooseFile">
-                </div>
+<!--                <button (click)="onUpload()"-->
+<!--                        class="btn btn-success">-->
+<!--                  Upload-->
+<!--                </button>-->
               </div>
             </div>
           </div>
@@ -86,7 +80,7 @@
             </button >
           </div>
           <div fxLayout="column" fxFlex="50" style="padding-top: 30px">
-            <button class="center" (click)="goHome()">
+            <button class="center" (click)="registerArtwork(tittle.value, description.value, artworkType.value)">
               Continuar
             </button>
           </div>

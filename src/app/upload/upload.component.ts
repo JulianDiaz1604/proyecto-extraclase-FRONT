@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UploadService} from "../../service/upload.service";
 import {ArtworkService} from "../../service/artwork.service";
 import {Router} from "@angular/router";
-import { HomeComponent } from '../home/home.component';
+import {InvitedUser} from "../../models/User";
 
 @Component({
   selector: 'upload',
@@ -12,31 +11,107 @@ import { HomeComponent } from '../home/home.component';
 
 export class UploadComponent implements OnInit{
 
-  categories: any;
-  artworkTypes: any;
+  categories: any = [];
+  artworkTypes: any = [];
+
+  invitedUser: InvitedUser = {
+    id: "10000000-0000-0000-0000-000000000000",
+    name: "Invitado",
+    lastName: "Artdly",
+    mail: "invitado@artdly.com",
+    username: "InvitadoArtdly",
+    password: "artdly",
+    birthDate: "2022-11-13",
+    description: "",
+    isPrivate: "false"
+  }
+
+  // Variable to store shortLink from api response
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  file: any; // Variable to store file
 
   constructor(
     private artworkService: ArtworkService,
     private router: Router
-  ){
+  ) {
   }
 
-  ngOnInit(): void {
-    this.artworkService.listCategories().subscribe(res => {
-      this.categories = res;
-      this.categories = this.categories.data;
-      console.log(this.categories);
-    });
+  createArtwork(tittleA: string, description: any, artworkType: any):any {
+    console.log(tittleA, description, artworkType)
+    const artwork: any = {
+      tittle: tittleA,
+      description: description,
+      file: {
+        pathFile: tittleA,
+        typeFile: {
+          fileType: "png"
+        }
+      },
+      artworkType: artworkType,
+      user: {
+        id: "10000000-0000-0000-0000-000000000000",
+        name: "Invitado",
+        lastName: "Artdly",
+        mail: "invitado@artdly.com",
+        username: "InvitadoArtdly",
+        password: "artdly",
+        birthDate: "0001-01-01",
+        description: "",
+        private: false
+      }
+    }
+    return artwork;
+  }
+
+  registerArtwork(tittleA: any, description: any, artworkType: any){
+    const artwork = this.createArtwork(tittleA, description, artworkType);
+    this.artworkService.uploadArtwork(artwork).subscribe(res => {
+      console.log(res);
+    })
+    // this.onUpload();
+    this.ngOnInit();
+    this.goHome();
+  }
+
+  goHome(): void {
+    this.router.navigate(['artdly'])
+  }
+
+  ngOnInit(){
     this.artworkService.listArtworkType().subscribe(res => {
       this.artworkTypes = res;
       this.artworkTypes = this.artworkTypes.data;
-      console.log(this.artworkTypes);
+      console.log(this.artworkTypes)
+    });
+    this.artworkService.listCategories().subscribe(res => {
+      this.categories = res;
+      this.categories = this.categories.data;
+      console.log(this.categories)
     })
   }
 
-goHome():void{
-  this.router.navigate(['artdly'])
-}
+// On file Select
+  onChange(event: any) {
+    this.file = event.target.files[0];
+    console.log(this.file);
+  }
 
+  // OnClick of button Upload
+  onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.artworkService.pushFileToStorage(this.file).subscribe(
+      (event: any) => {
+        if (typeof (event) === 'object') {
+
+          // Short link via api response
+          this.shortLink = event.link;
+
+          this.loading = false; // Flag variable
+        }
+      }
+    );
+  }
 
 }

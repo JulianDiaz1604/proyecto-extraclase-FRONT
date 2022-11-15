@@ -46,7 +46,7 @@
     </div>
   </div>
   <div style="height: 60px"></div>
-  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="contentBody">
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="contentBody" style="overflow: auto">
     <div fxLayout="column" fxFlex="30"></div>
     <div *ngFor="let artwork of artworks" class="center" fxLayout="column" fxFlex="40">
       <mat-card style="height: 450px; min-width: 500px">
@@ -57,7 +57,7 @@
         <div fxLayout="column" fxFlex="7" fxLayoutAlign="space-between stretch"></div>
           <div fxLayout="column" fxFlex="86" fxLayoutAlign="space-between stretch">
             <div fxLayout="row" fxFlex="10" style="padding-top: 10px; padding-left: 10px; font-size: x-large">
-              Usuario
+              {{artwork.user.name}}
             </div>
             <div fxLayout="row" fxFlex="60">
               <img class="center" src="assets/Fondo.png">

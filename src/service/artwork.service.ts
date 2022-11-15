@@ -44,16 +44,19 @@ export class ArtworkService {
     return this.http.post<any>('/artdly/user/register', user)
   }
 
-  pushFileToStorage(file: FormData): Observable<HttpEvent<{}>> {
-    //const data: FormData = new FormData();
-    //data.append('file', file);
-    //return this.http.post<any>('/artdly/artwork/savefile', data);
-    // const newRequest = new HttpRequest('POST', '/artdly/artwork/savefile', FormData, {
-    //   reportProgress: true,
-    //   responseType: 'text'
-    // });
-    // return this.http.request(newRequest);
-    return this.http.post<any>('/artdly/artwork/savefile', file);
+  pushFileToStorage(file: any): Observable<HttpEvent<{}>> {
+
+    // Create form data
+    const formData = new FormData();
+
+    // Store form name as "file" with file data
+    formData.append("file", file, file.name);
+
+    return this.http.post<any>('/artdly/artwork/savefile', formData);
+  }
+
+  existLike(userId: any, artworkId: any):Observable<any>{
+    return this.http.get('/artdly/'+userId+"/"+artworkId);
   }
 
 
