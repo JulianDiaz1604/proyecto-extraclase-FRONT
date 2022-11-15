@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="topBar">
+    <div fxLayout="column" fxFlex="20">
+      <div fxLayout="row" fxFlex="100">
+        <div fxLayout="row" fxFlex="9"></div>
+        <div fxLayout="column">
+          <div fxLayut="column" fxFlex="30"></div>
+          <div title="Registrarse" fxLayut="column" fxFlex="20">
+            <button class="cta">
+              <span class="hover-underline-animation">
+                <mat-icon class="icon-display">perm_identity</mat-icon>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="60">
+      <div fxLayout="row" fxFlex="100">
+        <div fxLayout="column" fxFlex="40"></div>
+        <div fxLayout="column" fxFlex="30">
+          <img class="artdly" src="assets/artdlyLogo.png">
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="20">
+      <div fxLayout="row" fxFlex="100">
+        <div fxLayout="row" fxFlex="78"></div>
+        <div fxLayout="column">
+          <div fxLayut="column" fxFlex="32"></div>
+          <div title="Publicar obra" fxLayut="column" fxFlex="20">
+            <button class="cta">
+              <span class="hover-underline-animation">
+                <mat-icon class="icon-display">add</mat-icon>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 60px"></div>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="contentBody">
+    <div fxLayout="column" fxFlex="30"></div>
+    <div *ngFor="let artwork of categories" class="center" fxLayout="column" fxFlex="40">
+      <mat-card style="height: 450px; min-width: 500px">
+<!--        <mat-card-title style="padding-left: 30px; padding-top: 10px">-->
+<!--          User-->
+<!--        </mat-card-title>-->
+<!--        <mat-card-content>-->
+        <div fxLayout="column" fxFlex="7" fxLayoutAlign="space-between stretch"></div>
+          <div fxLayout="column" fxFlex="86" fxLayoutAlign="space-between stretch">
+            <div fxLayout="row" fxFlex="10" style="padding-top: 10px; padding-left: 10px; font-size: x-large">
+              Usuario
+            </div>
+            <div fxLayout="row" fxFlex="60">
+              <img class="center" src="assets/Fondo.png">
+            </div>
+            <div fxLayout="column" fxFlex="30">
+              <div fxLayout="row" fxFlex="35">
+                <div fxLayout="column" fxFlex="70" style="font-size: 20px; padding-top: 15px">
+                  {{artwork.tittle}}
+                </div>
+                <div fxLayout="column" fxFlex="30" style="padding-left: 90px; padding-top: 10px">
+<!--                  <input type="checkbox" checked="checked" id="favorite" name="favorite-checkbox" value="favorite-button">-->
+<!--                  <label for="favorite" class="container" style="max-width: 23px">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>-->
+<!--&lt;!&ndash;                    <div class="action">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <span class="option-1">Me gusta</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <span class="option-2">Me gusta</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                  </label>-->
+                  <mat-icon style="color: red">favorite</mat-icon>
+<!--                  <mat-icon style="color: red">favorite_border</mat-icon>-->
+                </div>
+              </div>
+              <div fxLayout="row" fxFlex="65">
+                {{artwork.description}}
+              </div>
+            </div>
+          </div>
+        <div fxLayout="column" fxFlex="7" fxLayoutAlign="space-between stretch"></div>
+<!--        </mat-card-content>-->
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="30"></div>
+  </div>
+</body>
+</html>

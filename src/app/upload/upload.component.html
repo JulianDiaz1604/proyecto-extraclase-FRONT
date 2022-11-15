@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post</title>
+</head>
+<body>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="topBar">
+    <div fxLayout="column" fxFlex="20">
+
+    </div>
+    <div fxLayout="column" fxFlex="60">
+      <div fxLayout="row" fxFlex="100">
+        <div fxLayout="column" fxFlex="40"></div>
+        <div fxLayout="column" fxFlex="30">
+          <img (click)="goHome()" class="artdly" src="assets/artdlyLogo.png">
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="20">
+
+    </div>
+  </div>
+  <div style="height: 60px"></div>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="contentBody">
+    <mat-card class="center" style="width: 80%; height: 90%">
+      <div fxLayout="column" fxFlex="100">
+        <div fxLayout="row" fxFlex="15" class="center" style="font-size: xx-large; padding-top: 25px">
+          Publicar Obra
+        </div>
+        <div fxLayout="row" fxFlex="65">
+          <div fxLayout="column" fxFlex="50">
+            <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Titulo</mat-label>
+                <input matInput>
+              </mat-form-field></td>
+            </div>
+            <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Descripción</mat-label>
+                <input matInput>
+              </mat-form-field></td>
+            </div>
+            <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
+              <mat-form-field appearance="fill" style="width: 98%">
+                <mat-label>Categoria</mat-label>
+                <mat-select #category>
+                  <mat-option *ngFor="let category of categories" [value]="category">
+                    {{category.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
+              <mat-form-field appearance="fill" style="width: 98%">
+                <mat-label>Tipo de obra</mat-label>
+                <mat-select #artworkType>
+                  <mat-option *ngFor="let artworkYType of artworkTypes" [value]="artworkYType">
+                    {{artworkYType.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
+              <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+              <div class="file-upload" style="width: 98%">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileName">Choose File</div>
+                  <div class="file-select-name" id="noFile">No file chosen...</div>
+                  <input #file type="file" name="chooseFile" id="chooseFile">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxFlex="50">
+            <img class="center" src="assets/Fondo.png">
+          </div>
+        </div>
+        <div fxLayout="row" fxFlex="20"></div>
+      </div>
+    </mat-card>
+  </div>
+</body>
+</html>
