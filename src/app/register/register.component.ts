@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UploadService} from "../../service/upload.service";
 import {ArtworkService} from "../../service/artwork.service";
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'register',
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit{
   artworkTypes: any;
 
   constructor(
-    private artworkService: ArtworkService
+    private artworkService: ArtworkService,
+    private route:Router
   ){
   }
 
@@ -29,6 +31,10 @@ export class RegisterComponent implements OnInit{
       this.artworkTypes = this.artworkTypes.data;
       console.log(this.artworkTypes);
     })
+  }
+  goHome(){
+    this.route.navigate(['artdly']);
+    
   }
 
 }

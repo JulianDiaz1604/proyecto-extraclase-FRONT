@@ -10,10 +10,10 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [{
   path: '',
-  redirectTo: 'artdly',
+  redirectTo: '',
   pathMatch: 'full'
 }, {
-  path: 'artdly',
+  path: '',
 }];
 
 @NgModule({

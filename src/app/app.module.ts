@@ -21,7 +21,7 @@ import {UploadComponent} from "./upload/upload.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 
 const appRoutes: Routes=[
-  {path: '', component: HomeComponent},
+  {path: 'artdly', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'upload', component: UploadComponent}
 ];
@@ -54,4 +54,7 @@ const appRoutes: Routes=[
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+
+ }

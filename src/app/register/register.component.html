@@ -11,7 +11,7 @@
       <div fxLayout="row" fxFlex="100">
         <div fxLayout="column" fxFlex="40"></div>
         <div fxLayout="column" fxFlex="30">
-          <img class="artdly" src="assets/artdlyLogo.png">
+          <img (click)="goHome()" class="artdly" src="assets/artdlyLogo.png">
         </div>
       </div>
     </div>
@@ -52,12 +52,12 @@
         </div>
         <div fxLayout="row" fxFlex="20">
           <div fxLayout="column" fxFlex="50" style="padding-top: 30px; padding-left: 0px">
-            <button class="center2">
+            <button (click)="goHome()" class="center2">
               Cancelar
             </button>
           </div>
           <div fxLayout="column" fxFlex="50" style="padding-top: 30px">
-            <button class="center2">
+            <button (click)="goHome()" class="center2">
               Continuar
             </button>
           </div>
