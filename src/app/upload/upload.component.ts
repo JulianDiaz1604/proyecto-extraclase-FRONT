@@ -45,7 +45,7 @@ export class UploadComponent implements OnInit{
       file: {
         pathFile: tittleA,
         typeFile: {
-          fileType: "png"
+          fileType: this.file.type
         }
       },
       artworkType: artworkType,
