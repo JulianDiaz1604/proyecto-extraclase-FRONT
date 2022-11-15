@@ -34,8 +34,9 @@ export class UploadComponent implements OnInit{
     })
   }
 
-  goHome(){
-    this.router.navigate(['artdly'])
-  }
+goHome():void{
+  this.router.navigate(['artdly'])
+}
+
 
 }

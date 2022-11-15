@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UploadService} from "../../service/upload.service";
 import {ArtworkService} from "../../service/artwork.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit{
   liked: boolean = false;
 
   constructor(
-    private artworkService: ArtworkService
+    private artworkService: ArtworkService,
+    private router:Router
   ){
   }
 
@@ -24,10 +26,19 @@ export class HomeComponent implements OnInit{
       this.artworks = this.artworks.data;
       console.log(this.artworks);
     })
+
+    
+  
   }
 
   like(){
     this.liked = !this.liked;
   }
 
+  goRegister(){
+    this.router.navigate(['register'])
+  }
+  goUpload(){
+    this.router.navigate(['upload'])
+  }
 }

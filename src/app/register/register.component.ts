@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UploadService} from "../../service/upload.service";
 import {ArtworkService} from "../../service/artwork.service";
-import {InvitedUser, User} from "../../models/User";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'register',
@@ -10,43 +9,32 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent{
+export class RegisterComponent implements OnInit{
 
-  httpAnswer: any;
-  invitedUser: InvitedUser = {
-    id: "10000000-0000-0000-0000-000000000000",
-    name: "Invitado",
-    lastName: "Artdly",
-    mail: "invitado@artdly.com",
-    username: "InvitadoArtdly",
-    password: "artdly",
-    birthDate: "2022-11-13",
-    description: "",
-    isPrivate: "false"
-  }
+  categories: any;
+  artworkTypes: any;
 
   constructor(
-    private artworkService: ArtworkService
+    private artworkService: ArtworkService,
+    private route:Router
   ){
   }
 
-  registerUser(name:any, lastName:any, email:any, nickname:any, password:any,description:any, birthDate:any){
-    const user: User = {
-      name: name,
-      lastName: lastName,
-      mail: email,
-      username: nickname,
-      password: password,
-      birthDate: birthDate,
-      description: description,
-      isPrivate: false
-    }
-    this.artworkService.createUser(user).subscribe(res =>{
-      this.httpAnswer = res;
-      console.log(res)
-      window.alert(this.httpAnswer.messages.content)
-    }, (error) => console.log(error.error.message.content))
-    console.log(user)
+  ngOnInit(): void {
+    this.artworkService.listArtworks().subscribe(res => {
+      this.categories = res;
+      this.categories = this.categories.data;
+      console.log(this.categories);
+    });
+    this.artworkService.listArtworks().subscribe(res => {
+      this.artworkTypes = res;
+      this.artworkTypes = this.artworkTypes.data;
+      console.log(this.artworkTypes);
+    })
+  }
+  goHome(){
+    this.route.navigate(['artdly']);
+    
   }
 
 }

@@ -12,7 +12,7 @@
         <div fxLayout="column">
           <div fxLayut="column" fxFlex="30"></div>
           <div title="Registrarse" fxLayut="column" fxFlex="20">
-            <button class="cta">
+            <button (click)="goRegister()" class="cta">
               <span class="hover-underline-animation">
                 <mat-icon class="icon-display">perm_identity</mat-icon>
               </span>
@@ -35,7 +35,7 @@
         <div fxLayout="column">
           <div fxLayut="column" fxFlex="32"></div>
           <div title="Publicar obra" fxLayut="column" fxFlex="20">
-            <button class="cta" href="/UploadComponent">
+            <button (click)="goUpload()" class="cta" href="/UploadComponent">
               <span class="hover-underline-animation">
                 <mat-icon class="icon-display">add</mat-icon>
               </span>
