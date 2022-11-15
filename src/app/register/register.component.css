@@ -27,10 +27,17 @@
   margin-right: auto;
   display: block;
 }
+.center2 {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: 12px;
+  margin-right: auto;
+  display: block;
+}
 
 
 /* From uiverse.io by @alexruix */
-.input {
+.input2 {
   line-height: 28px;
   border: 2px solid transparent;
   border-bottom-color: #777;
@@ -41,24 +48,63 @@
   transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.input:focus, input:hover {
+.input2:focus, input:hover {
   outline: none;
   padding: .2rem 1rem;
   border-radius: 1rem;
   border-color: #7a9cc6;
 }
 
-.input::placeholder {
+.input2::placeholder {
   color: #777;
 }
 
-.input:focus::placeholder {
+.input2:focus::placeholder {
   opacity: 0;
   transition: opacity .3s;
 }
 
 
 
+
+button {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #464545;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 600;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #ea9e7a;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+}
+
+button:hover {
+  color: #e8e8e8;
+}
+
+button:hover::before {
+  width: 100%;
+}
 
 
 

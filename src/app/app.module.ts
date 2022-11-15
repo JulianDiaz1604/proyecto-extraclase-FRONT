@@ -18,6 +18,7 @@ import {HomeComponent} from "./home/home.component";
 import {RouterModule, Routes} from "@angular/router";
 import {RegisterComponent} from "./register/register.component";
 import {UploadComponent} from "./upload/upload.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 const appRoutes: Routes=[
   {path: '', component: HomeComponent},
@@ -47,7 +48,8 @@ const appRoutes: Routes=[
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
