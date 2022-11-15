@@ -44,7 +44,7 @@ export class ArtworkService {
     return this.http.post<any>('/artdly/user/register', user)
   }
 
-  pushFileToStorage(file: any): Observable<HttpEvent<{}>> {
+  pushFileToStorage(file: any, tittle: any): Observable<HttpEvent<{}>> {
 
     // Create form data
     const formData = new FormData();
@@ -52,7 +52,7 @@ export class ArtworkService {
     // Store form name as "file" with file data
     formData.append("file", file, file.name);
 
-    return this.http.post<any>('/artdly/artwork/savefile', formData);
+    return this.http.post<any>('/artdly/artwork/savefile/'+tittle, formData);
   }
 
   existLike(userId: any, artworkId: any):Observable<any>{
