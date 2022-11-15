@@ -13,8 +13,7 @@ const routes: Routes = [{
   redirectTo: 'artdly',
   pathMatch: 'full'
 }, {
-  path: 'artdly/upload',
-  loadChildren: () => import('./upload/upload.component').then(m => m.UploadComponent)
+  path: 'artdly',
 }];
 
 @NgModule({

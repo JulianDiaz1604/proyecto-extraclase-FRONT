@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UploadService} from "../../service/upload.service";
 import {ArtworkService} from "../../service/artwork.service";
 import {Router} from "@angular/router";
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'upload',
@@ -33,8 +34,8 @@ export class UploadComponent implements OnInit{
     })
   }
 
-  goHome():void {
-    this.router.navigate(['home'])
+  goHome(){
+    this.router.navigate(['artdly'])
   }
 
 }

@@ -19,8 +19,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {RegisterComponent} from "./register/register.component";
 import {UploadComponent} from "./upload/upload.component";
 
-const appRoutes: Routes = [
-  {path: 'artdly', component: HomeComponent},
+const appRoutes: Routes=[
+  {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'upload', component: UploadComponent}
 ];
