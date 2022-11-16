@@ -45,7 +45,7 @@ export class UploadComponent implements OnInit{
       file: {
         pathFile: tittleA,
         typeFile: {
-          fileType: "png"
+          fileType: this.file.type
         }
       },
       artworkType: artworkType,
@@ -69,9 +69,9 @@ export class UploadComponent implements OnInit{
     this.artworkService.uploadArtwork(artwork).subscribe(res => {
       console.log(res);
     })
-    // this.onUpload();
+    this.onUpload(tittleA);
     this.ngOnInit();
-    this.goHome();
+    // this.goHome();
   }
 
   goHome(): void {
@@ -98,10 +98,10 @@ export class UploadComponent implements OnInit{
   }
 
   // OnClick of button Upload
-  onUpload() {
+  onUpload(tittle: any) {
     this.loading = !this.loading;
     console.log(this.file);
-    this.artworkService.pushFileToStorage(this.file).subscribe(
+    this.artworkService.pushFileToStorage(this.file, tittle).subscribe(
       (event: any) => {
         if (typeof (event) === 'object') {
 
