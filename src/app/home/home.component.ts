@@ -41,12 +41,12 @@ export class HomeComponent implements OnInit{
     })
   }
 
-  haveLike(artworkId: any): any{
-    this.artworkService.existLike(this.invitedUser.id, artworkId).subscribe(res => {
-      console.log(res)
-      return res;
-    })
-  }
+  // haveLike(artworkId: any): any{
+  //   this.artworkService.existLike(this.invitedUser.id, artworkId).subscribe(res => {
+  //     console.log(res)
+  //     return res;
+  //   })
+  // }
 
   like(){
     this.liked = !this.liked;

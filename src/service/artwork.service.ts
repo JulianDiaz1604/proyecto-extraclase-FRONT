@@ -55,9 +55,9 @@ export class ArtworkService {
     return this.http.post<any>('/artdly/artwork/savefile', formData);
   }
 
-  existLike(userId: any, artworkId: any):Observable<any>{
-    return this.http.get('/artdly/'+userId+"/"+artworkId);
-  }
+  // existLike(userId: any, artworkId: any):Observable<any>{
+  //   return this.http.get('/artdly/'+userId+"/"+artworkId);
+  // }
 
 
 }
