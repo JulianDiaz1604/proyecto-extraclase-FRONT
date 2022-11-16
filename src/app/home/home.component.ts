@@ -48,8 +48,17 @@ export class HomeComponent implements OnInit{
   //   })
   // }
 
-  like(){
+  like(artwork: any){
     this.liked = !this.liked;
+    this.artworkService.createLike(this.createLike(artwork)).subscribe()
+  }
+
+  createLike(artwork: any){
+    const like = {
+      user: this.invitedUser,
+      artwork: artwork
+    }
+    return like;
   }
 
   goRegister(){

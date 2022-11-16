@@ -32,10 +32,10 @@
         <div fxLayout="row" fxFlex="65">
           <div fxLayout="column" fxFlex="50">
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-              <input #tittle placeholder="Nombre" type="text" style="width: 70%" class="input2" required="">
+              <input #tittle placeholder="Titulo" type="text" style="width: 70%" class="input2" required="">
             </div>
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
-              <input #description placeholder="Nombre" type="text" style="width: 70%" class="input2" required="">
+              <input #description placeholder="Decripción" type="text" style="width: 70%" class="input2" required="">
             </div>
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
               <mat-form-field appearance="fill" style="max-height: 25px; width: 70%">
@@ -60,7 +60,8 @@
             <div fxLayout="row" fxFlex="20" class="center" style="width: 80%; padding-top: 10px">
               <div class="text-center">
                 <input class="form-control" type="file"
-                       (change)="onChange($event)">
+                       (change)="onChange($event)" style="width: 100%">
+                <p style="padding-left: 10px; font-size: small">Solo imagenes</p>
 
 <!--                <button (click)="onUpload()"-->
 <!--                        class="btn btn-success">-->
@@ -70,7 +71,7 @@
             </div>
           </div>
           <div fxLayout="row" fxFlex="50">
-            <img class="center" src="assets/Fondo.png">
+            <img class="center" src="assets/artdlyLogo.jpeg">
           </div>
         </div>
         <div fxLayout="row" fxFlex="20">

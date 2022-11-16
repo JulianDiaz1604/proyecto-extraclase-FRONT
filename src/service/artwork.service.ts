@@ -55,6 +55,10 @@ export class ArtworkService {
     return this.http.post<any>('/artdly/artwork/savefile/'+tittle, formData);
   }
 
+  createLike(like: any): Observable<any> {
+    return this.http.post<any>('artdly/like/register', like);
+  }
+
   // existLike(userId: any, artworkId: any):Observable<any>{
   //   return this.http.get('/artdly/'+userId+"/"+artworkId);
   // }

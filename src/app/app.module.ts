@@ -20,6 +20,7 @@ import {RegisterComponent} from "./register/register.component";
 import {UploadComponent} from "./upload/upload.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const appRoutes: Routes=[
   {path: 'artdly', component: HomeComponent},
@@ -51,7 +52,8 @@ const appRoutes: Routes=[
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

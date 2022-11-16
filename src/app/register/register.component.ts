@@ -28,7 +28,8 @@ export class RegisterComponent{
 
   constructor(
     private artworkService: ArtworkService,
-    private route:Router
+    private route:Router,
+    private snackBar: MatSnackBar
   ){
   }
 
@@ -45,12 +46,23 @@ export class RegisterComponent{
     }
     this.artworkService.createUser(user).subscribe(res =>{
       this.httpAnswer = res;
-    }, (error) => console.log(error.error.message.content))
-    this.goHome();
+      this.showMessage(this.httpAnswer.messages[0].content)
+      this.goHome()
+    }, (error) => {
+      this.showMessage(error.error.messages[0].content)
+    })
   }
+
   goHome(){
     this.route.navigate(['artdly']);
+  }
 
+
+  showMessage(message: string){
+    const mySnackBar = this.snackBar.open(message, "Ok");
+    mySnackBar.onAction().subscribe(() => {
+      mySnackBar.dismiss()
+    })
   }
 
 }

@@ -60,7 +60,7 @@
               {{artwork.user.name}}
             </div>
             <div fxLayout="row" fxFlex="60">
-              <img class="center" src="assets/Fondo.png">
+              <img class="center" src="assets/artdlyLogo.png">
             </div>
             <div fxLayout="column" fxFlex="30">
               <div fxLayout="row" fxFlex="35">
@@ -76,8 +76,7 @@
 <!--&lt;!&ndash;                      <span class="option-2">Me gusta</span>&ndash;&gt;-->
 <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
 <!--                  </label>-->
-                  <mat-icon (click)="like()" style="color: red" *ngIf="liked">favorite</mat-icon>
-                  <mat-icon (click)="like()" style="color: black" *ngIf="!liked">favorite_border</mat-icon>
+                  <mat-icon (click)="like(artwork)" style="color: black">favorite_border</mat-icon>
                 </div>
               </div>
               <div fxLayout="row" fxFlex="65">

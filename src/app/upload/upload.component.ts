@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArtworkService} from "../../service/artwork.service";
 import {Router} from "@angular/router";
 import {InvitedUser} from "../../models/User";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'upload',
@@ -13,6 +14,8 @@ export class UploadComponent implements OnInit{
 
   categories: any = [];
   artworkTypes: any = [];
+  canContinue: boolean = false;
+  messages: any = [];
 
   invitedUser: InvitedUser = {
     id: "10000000-0000-0000-0000-000000000000",
@@ -33,45 +36,56 @@ export class UploadComponent implements OnInit{
 
   constructor(
     private artworkService: ArtworkService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
   }
 
   createArtwork(tittleA: string, description: any, artworkType: any):any {
-    console.log(tittleA, description, artworkType)
-    const artwork: any = {
-      tittle: tittleA,
-      description: description,
-      file: {
-        pathFile: tittleA,
-        typeFile: {
-          fileType: this.file.type
+    try {
+      const artwork: any = {
+        tittle: tittleA,
+        description: description,
+        file: {
+          pathFile: tittleA,
+          typeFile: {
+            fileType: this.file.type
+          }
+        },
+        artworkType: artworkType,
+        user: {
+          id: "10000000-0000-0000-0000-000000000000",
+          name: "Invitado",
+          lastName: "Artdly",
+          mail: "invitado@artdly.com",
+          username: "InvitadoArtdly",
+          password: "artdly",
+          birthDate: "0001-01-01",
+          description: "",
+          private: false
         }
-      },
-      artworkType: artworkType,
-      user: {
-        id: "10000000-0000-0000-0000-000000000000",
-        name: "Invitado",
-        lastName: "Artdly",
-        mail: "invitado@artdly.com",
-        username: "InvitadoArtdly",
-        password: "artdly",
-        birthDate: "0001-01-01",
-        description: "",
-        private: false
       }
+      this.canContinue = true;
+      return artwork;
+    } catch (error){
+      this.showMessage("Debe llenar todos los campos")
     }
-    return artwork;
+
   }
 
   registerArtwork(tittleA: any, description: any, artworkType: any){
     const artwork = this.createArtwork(tittleA, description, artworkType);
-    this.artworkService.uploadArtwork(artwork).subscribe(res => {
-      console.log(res);
-    })
-    this.onUpload(tittleA);
-    this.ngOnInit();
-    // this.goHome();
+    try {
+      this.artworkService.uploadArtwork(artwork).subscribe(res => {
+        this.showMessage(res.messages[0].content)
+        this.goHome()
+      }, (error) => {
+        this.showMessage(error.error.messages[0].content)
+      })
+    } catch (error) {
+      console.log(error)
+      this.showMessage("Debe seleccionar una imagen")
+    }
   }
 
   goHome(): void {
@@ -82,12 +96,10 @@ export class UploadComponent implements OnInit{
     this.artworkService.listArtworkType().subscribe(res => {
       this.artworkTypes = res;
       this.artworkTypes = this.artworkTypes.data;
-      console.log(this.artworkTypes)
     });
     this.artworkService.listCategories().subscribe(res => {
       this.categories = res;
       this.categories = this.categories.data;
-      console.log(this.categories)
     })
   }
 
@@ -112,6 +124,13 @@ export class UploadComponent implements OnInit{
         }
       }
     );
+  }
+
+  showMessage(message: string){
+    const mySnackBar = this.snackBar.open(message, "Ok");
+    mySnackBar.onAction().subscribe(() => {
+      mySnackBar.dismiss()
+    })
   }
 
 }
