@@ -24,24 +24,24 @@ export class ArtworkService {
   }
 
   listArtworks(){
-    return this.http.get('/artdly/artwork/findall');
+    return this.http.get('http://localhost:8080/artdly/artwork/findall');
   }
 
   listCategories() {
-    return this.http.get('/artdly/category/findAll');
+    return this.http.get('http://localhost:8080/artdly/category/findAll');
   }
 
   listArtworkType() {
-    return this.http.get('/artdly/artworkType/findAll');
+    return this.http.get('http://localhost:8080/artdly/artworkType/findAll');
   }
 
   uploadArtwork(artwork:any): Observable<any> {
-    return this.http.post<any>(`/artdly/artwork/postArtwork`,
+    return this.http.post<any>(`http://localhost:8080/artdly/artwork/postArtwork`,
       artwork);
   }
 
   createUser(user: any): Observable<any>{
-    return this.http.post<any>('/artdly/user/register', user)
+    return this.http.post<any>('http://localhost:8080/artdly/user/register', user)
   }
 
   pushFileToStorage(file: any, tittle: any): Observable<HttpEvent<{}>> {
@@ -52,11 +52,11 @@ export class ArtworkService {
     // Store form name as "file" with file data
     formData.append("file", file, file.name);
 
-    return this.http.post<any>('/artdly/artwork/savefile/'+tittle, formData);
+    return this.http.post<any>('http://localhost:8080/artdly/artwork/savefile/'+tittle, formData);
   }
 
   createLike(like: any): Observable<any> {
-    return this.http.post<any>('artdly/like/register', like);
+    return this.http.post<any>('http://localhost:8080/artdly/like/register', like);
   }
 
   // existLike(userId: any, artworkId: any):Observable<any>{

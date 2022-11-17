@@ -44,13 +44,17 @@ export class RegisterComponent{
       description: description,
       isPrivate: false
     }
-    this.artworkService.createUser(user).subscribe(res =>{
-      this.httpAnswer = res;
-      this.showMessage(this.httpAnswer.messages[0].content)
-      this.goHome()
-    }, (error) => {
-      this.showMessage(error.error.messages[0].content)
+    this.artworkService.createUser(user).subscribe({
+      next:(res:any)=>this.arreglo(res),
+      error:(error)=>{console.log(error)
+        this.showMessage(error.error.messages[0].content)
+      }
     })
+  }
+  arreglo(res:any){
+    this.httpAnswer = res;
+    this.showMessage(this.httpAnswer.messages[0].content)
+    this.goHome()
   }
 
   goHome(){

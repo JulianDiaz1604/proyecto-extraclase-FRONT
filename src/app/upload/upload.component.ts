@@ -76,12 +76,13 @@ export class UploadComponent implements OnInit{
   registerArtwork(tittleA: any, description: any, artworkType: any){
     const artwork = this.createArtwork(tittleA, description, artworkType);
     try {
-      this.artworkService.uploadArtwork(artwork).subscribe(res => {
-        this.showMessage(res.messages[0].content)
-        this.goHome()
-      }, (error) => {
-        this.showMessage(error.error.messages[0].content)
-      })
+      this.artworkService.uploadArtwork(artwork).subscribe({
+       next:(res)=>{ this.showMessage(res.messages[0].content)
+        this.goHome()},
+        error:(error)=>{console.log(error)
+          this.showMessage(error.error.messages[0].content)}
+      }
+      )
     } catch (error) {
       console.log(error)
       this.showMessage("Debe seleccionar una imagen")
